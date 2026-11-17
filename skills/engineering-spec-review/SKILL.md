@@ -5,7 +5,7 @@ description: Review engineering requirements, specifications, and plans against 
 
 # Specification and plan review
 
-Use the installed `ce-doc-review` skill where applicable and read its `SKILL.md` in full. Apply to requirements, specifications, and plans. In OpenSpec projects, first read `openspec/README.md`, relevant specifications, and current change documents, and use available OpenSpec skills. Keep plans and verification evidence inside the existing change structure; avoid duplicate specifications and plans.
+Use the installed `ce-doc-review` skill where applicable and read its `SKILL.md` in full. Apply to requirements, specifications, and plans. Before OpenSpec operations in a project, use `engineering-setup` to check its readiness; reuse a still-valid check from the current task. Then read `openspec/README.md`, relevant specifications, and current change documents, and use available OpenSpec skills. Keep plans and verification evidence inside the existing change structure; avoid duplicate specifications and plans. Projects without OpenSpec use their existing requirements and plans; do not initialize it for a review.
 
 ## Establish governing sources
 

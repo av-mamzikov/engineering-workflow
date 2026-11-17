@@ -18,6 +18,7 @@ Use only the stages relevant to the task. In projects without OpenSpec, the set 
 
 | Skill | Responsibility |
 | --- | --- |
+| [engineering-setup](skills/engineering-setup/SKILL.md) | Check and prepare OpenSpec or Graphify in the target project when needed; reuse accessible dependencies. |
 | [engineering-workflow](skills/engineering-workflow/SKILL.md) | Coordinate OpenSpec context, Compound Engineering stages, delegation, and verification. |
 | [engineering-code-review](skills/engineering-code-review/SKILL.md) | Require independent code review, evaluate findings, and repeat review after fixes. |
 | [engineering-spec-review](skills/engineering-spec-review/SKILL.md) | Check requirements, specifications, and plans against governing sources, with independent re-review after corrections. |
@@ -26,20 +27,19 @@ The set adds coordination and review rules to the specialist skills. The main ag
 
 ## Requirements
 
-- Compound Engineering skills used by the selected stages.
-- OpenSpec skills and tooling required by the project when it uses OpenSpec.
-- The Graphify skill and its required tooling for the accompanying codebase guidance.
+- The Compound Engineering plugin, which supplies the `ce-*` skills used by the selected stages. Installation of this set checks it and installs it if missing; an accessible user-level installation is reused.
+- OpenSpec and Graphify project dependencies, checked through `engineering-setup` before the respective tool is used. They are not installed or initialized by the user-level set installer.
 - A coding agent with skill support and independent subagents for mandatory reviews.
 
-Installation includes checking existing dependencies and installing missing ones using their current official instructions. A missing dependency or reviewer must be reported, together with the work it blocks.
+Project checks cover the required plugin capabilities, tooling, and configuration for the target project. Only the dependency needed for the requested operation is prepared, using current official instructions. OpenSpec adoption still requires an explicit request. A missing dependency or reviewer is reported together with the work it blocks.
 
 ## Install
 
 Give Codex or another compatible coding agent this request:
 
 ```text
-Install engineering-workflow. Check its dependencies and install any missing
-ones using their current official instructions. Follow:
+Install the engineering-workflow skill set. Check the Compound Engineering
+plugin and install it if missing, using current official instructions. Follow:
 https://github.com/av-mamzikov/engineering-workflow/blob/main/INSTALL.md
 ```
 
@@ -47,10 +47,18 @@ https://github.com/av-mamzikov/engineering-workflow/blob/main/INSTALL.md
 
 ## Use
 
-After installation, open a new chat and confirm that the three skills and their dependencies are available. For example:
+After installation, open a new chat and confirm that all four skills and Compound Engineering are available. Project dependencies are checked when needed. For example:
 
 ```text
 Use $engineering-workflow to work on the existing OpenSpec change <change-name>.
 ```
+
+To inspect project readiness separately:
+
+```text
+Use $engineering-setup to check readiness for OpenSpec and Graphify in this project.
+```
+
+The workflow and specification review skills route OpenSpec checks through `engineering-setup`. The example user instructions also route Graphify checks there. A readiness check alone does not initialize unused tools or create graphs.
 
 Skill invocation syntax may differ in other tools. The set does not install itself or run updates automatically.

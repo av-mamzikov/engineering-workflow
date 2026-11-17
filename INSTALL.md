@@ -1,10 +1,10 @@
 # Install engineering-workflow
 
-Instructions for Codex or another compatible coding agent installing this set on the user's behalf. Use the current official installation guidance for dependencies; this document deliberately does not prescribe their installation commands.
+Instructions for Codex or another compatible coding agent installing this set on the user's behalf. Install the user-level skill set and check the Compound Engineering plugin here. OpenSpec and Graphify are checked later in the target project, when used, through `engineering-setup`. Use current official dependency instructions; this document deliberately does not prescribe installation commands.
 
 ## Inspect the environment
 
-Read [README.md](README.md), all three files under `skills/*/SKILL.md`, [examples/AGENTS.md](examples/AGENTS.md), and the existing user-level instructions before changing anything. If repository URLs cannot be read, obtain a local checkout and use that path. Cloning alone does not activate skills.
+Read [README.md](README.md), all four files under `skills/*/SKILL.md`, [examples/AGENTS.md](examples/AGENTS.md), and the existing user-level instructions before changing anything. If repository URLs cannot be read, obtain a local checkout and use that path. Cloning alone does not activate skills.
 
 For Codex, use `CODEX_HOME` when set, otherwise `~/.codex`. For other tools, check their current documented skill and instruction locations and compatibility; do not assume Codex paths or invocation syntax apply. Check skill support and independent subagent capability. Report unsupported capabilities and affected work rather than treating an incompatible installation as complete.
 
@@ -12,21 +12,22 @@ Stay within the user's authorized scope and host permissions. Check symlink or r
 
 ## Install skills and dependencies
 
-Install these three folders from `skills/` as separate discoverable skills:
+Install these four folders from `skills/` into the user-level skills directory as separate discoverable skills:
 
+- `engineering-setup`
 - `engineering-workflow`
 - `engineering-code-review`
 - `engineering-spec-review`
 
 Inspect existing destination folders first. Leave identical skills unchanged. Back up files before updates, preserve local customizations, and ask if an update requires choosing between conflicting changes. Do not blindly overwrite existing skill folders.
 
-Check what is already installed and compatible. Install missing dependencies using their current official instructions:
+Check whether the Compound Engineering plugin is installed and accessible to the current agent. Reuse a compatible accessible installation, including a user-level one. Verify it provides the `ce-*` capabilities named by the workflow and review skills. These are skills supplied by one plugin, not separate dependencies to install individually.
 
-- The Compound Engineering skills named by this set's workflow and review instructions.
-- The Graphify skill and its required tooling for the example codebase guidance.
-- The relevant OpenSpec skills and tooling when the target project uses OpenSpec.
+If the plugin is missing, install it at the user level using its current official instructions and the host's supported plugin mechanism. If an existing plugin lacks a required capability, check compatibility and the supported update path before making an authorized update; do not install duplicate copies or blindly overwrite customizations. Report required activation steps and verify availability after activation when possible.
 
-Verify dependency availability afterwards. Do not initialize OpenSpec in projects that do not use it as part of installing this set. Report dependencies that cannot be installed and the work they block. Do not silently treat partial installation as complete or waive mandatory reviews.
+Do not install or initialize OpenSpec or Graphify, configure projects, or build graphs during this user-level installation. Their plugin capabilities, tooling, and project setup are checked through `engineering-setup` when an operation needs them in a specific project. A project path is not required to install this set.
+
+Report a missing or inaccessible Compound Engineering plugin and the work it blocks. Do not silently treat partial user-level installation as complete or waive mandatory reviews. Deferred OpenSpec and Graphify checks are expected, not user-level installation failures.
 
 ## Merge user instructions
 
@@ -40,13 +41,13 @@ Before changing the instruction file, create a uniquely named backup and report 
 
 ## Validate and report
 
-Check that all three installed skills match the intended installation, dependencies are available, unrelated instructions remain unchanged, and repeating installation would not add duplicates. Report installed paths, changes, backup paths, dependency status, and limitations.
+Check that all four installed skills match the intended installation, Compound Engineering is accessible, unrelated instructions remain unchanged, and repeating installation would not add duplicates. Report installed paths, changes, backup paths, plugin status, and limitations. Explicitly report OpenSpec and Graphify as deferred until project use rather than claiming they were verified.
 
-Distinguish file validation from discovery by the host. Ask the user to open a new chat and confirm that all three skills and their dependencies are available there. Do not claim a live installation or discovery check that was not performed.
+Distinguish file validation from discovery by the host. Ask the user to open a new chat and confirm that all four skills and the Compound Engineering capabilities are available there. Do not claim a live installation or discovery check that was not performed.
 
 ## Update
 
-Compare the current repository with installed skills and the instruction block. Check dependencies using current official guidance, back up files before changing them, and preserve local customizations and unrelated instructions. Resolve conflicting updates explicitly. Do not silently remove older guidance.
+Compare the current repository with installed skills and the instruction block, including the new `engineering-setup` folder when upgrading an older three-skill installation. Check Compound Engineering using current official guidance; leave OpenSpec and Graphify checks for project use. Back up files before changing them and preserve local customizations and unrelated instructions. Resolve conflicting updates explicitly. Do not silently remove older guidance.
 
 ## Remove
 

@@ -7,6 +7,12 @@ description: Combine project OpenSpec guidance with Compound Engineering skills 
 
 Apply the user's engineering conventions while using existing specialist skills. Read each applicable installed skill's `SKILL.md` in full before applying it. Discover dependencies by skill name in the current environment; do not rely on machine-specific paths or modify installed third-party skills.
 
+## Check project dependencies when needed
+
+Use `engineering-setup` before the first OpenSpec or Graphify operation in the target project, and recheck if the project or dependency state changes. Check only the dependency needed for that operation; do not make unrelated work wait for unused project tools. Reuse verified readiness within the current task while it remains applicable.
+
+The set installer checks the Compound Engineering plugin, including user-level availability. If it later becomes unavailable, route the dependency problem through `engineering-setup`. Do not initialize OpenSpec merely because the skill set is installed or invoked.
+
 ## Select the necessary work
 
 Use only relevant stages and reuse agreed plans:
@@ -27,7 +33,7 @@ Verify behavior with appropriate tests and acceptance scenarios. Report actual r
 
 ## OpenSpec projects
 
-Also use available OpenSpec skills. First read `openspec/README.md`, relevant specifications, and current change documents when present. Follow the project's documented change workflow, approved requirements, and acceptance scenarios. Distinguish proposals from agreed decisions.
+Also use available OpenSpec skills. After the project readiness check through `engineering-setup`, first read `openspec/README.md`, relevant specifications, and current change documents when present. Follow the project's documented change workflow, approved requirements, and acceptance scenarios. Distinguish proposals from agreed decisions.
 
 Use OpenSpec for the project's specification and change structure, and Compound Engineering for the relevant work procedures. Pass the governing requirements, current change documents, and agreed plans into each selected CE stage. CE brainstorming and planning must respect the project's approval state; they do not turn a proposal into an approved requirement.
 
