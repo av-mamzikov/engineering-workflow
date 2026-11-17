@@ -1,98 +1,55 @@
 # Engineering workflow
 
-A set of personal Codex skills extracted from user-level guidance. The instructions remain in English, matching the source.
+Use OpenSpec and Compound Engineering together to take engineering work from requirements through implementation and independent review.
 
-## Contents
+OpenSpec provides the project's specifications and change workflow. Compound Engineering provides specialist skills for exploring requirements, planning, debugging, implementation, and review. This set connects them: work follows the project's approved requirements, stays in the existing change structure, and returns to independent review after corrections.
 
-- `skills/engineering-workflow`: relevant Compound Engineering stages, OpenSpec context, delegation, verification, and authorization.
-- `skills/engineering-code-review`: independent code review and the fix-and-review loop.
-- `skills/engineering-spec-review`: governing requirements, approved exceptions, and independent document re-review after corrections.
-- `examples/AGENTS.md`: example guidance to merge into existing user-level instructions. It is not a replacement file or an installation target.
+## How they work together
 
-The set uses Compound Engineering, Graphify, and, in OpenSpec projects, the relevant OpenSpec skills. These dependencies are installed separately using their current supported methods; this repository does not vendor or modify them.
+1. **Understand the change.** Read project guidance, relevant specifications, and current change documents. Distinguish proposed changes from approved decisions.
+2. **Choose the work needed.** Use the relevant Compound Engineering skills and reuse agreed plans. In an OpenSpec change, keep plans and verification evidence alongside that change instead of creating parallel documents.
+3. **Check requirements.** Review specifications and plans against the governing requirements. A detailed scenario does not establish an approved exception to a general rule.
+4. **Implement and verify.** Work against the approved requirements and acceptance scenarios, using appropriate tests and browser checks.
+5. **Review independently.** After any implementation that changes code, including small changes, a separate subagent reviews it. After review fixes, submit the updated code or documents for independent review again. Resolve substantiated serious findings before declaring completion; report blockers when further progress requires a decision or authorization.
 
-## Installation with Codex or another coding agent
+Use only the stages relevant to the task. In projects without OpenSpec, the set still applies Compound Engineering and the same review rules to the project's existing requirements and plans. It does not initialize OpenSpec automatically.
 
-Ask Codex or a similar coding agent with filesystem access to install the set and its required dependencies. Copy this request into a new chat:
+## Skills
+
+| Skill | Responsibility |
+| --- | --- |
+| [engineering-workflow](skills/engineering-workflow/SKILL.md) | Coordinate OpenSpec context, Compound Engineering stages, delegation, and verification. |
+| [engineering-code-review](skills/engineering-code-review/SKILL.md) | Require independent code review, evaluate findings, and repeat review after fixes. |
+| [engineering-spec-review](skills/engineering-spec-review/SKILL.md) | Check requirements, specifications, and plans against governing sources, with independent re-review after corrections. |
+
+The set adds coordination and review rules to the specialist skills. The main agent remains responsible for evaluating findings, integrating changes, and checking the result. Minor recommendations do not block completion. Commits, pushes, and publishing require the user's authorization.
+
+## Requirements
+
+- Compound Engineering skills used by the selected stages.
+- OpenSpec skills and tooling required by the project when it uses OpenSpec.
+- The Graphify skill and its required tooling for the accompanying codebase guidance.
+- A coding agent with skill support and independent subagents for mandatory reviews.
+
+Installation includes checking existing dependencies and installing missing ones using their current official instructions. A missing dependency or reviewer must be reported, together with the work it blocks.
+
+## Install
+
+Give Codex or another compatible coding agent this request:
 
 ```text
-Install the skills from https://github.com/av-mamzikov/engineering-workflow
-and their required dependencies into my coding agent environment.
-
-Before changing anything, read this repository's README.md, all three
-SKILL.md files, examples/AGENTS.md, and my existing user-level instructions.
-For Codex, use CODEX_HOME when set, otherwise ~/.codex. For another tool,
-check its current documented skill and instruction locations and compatibility;
-do not assume Codex paths apply. If the tool cannot support a required
-capability, including independent subagents, report the limitation.
-
-Install all three folders from skills/ as separate discoverable skills.
-Inspect existing destination folders first. Leave identical skills unchanged.
-Back up files before updates, preserve local customizations, and ask if an
-update requires choosing between conflicting changes. Do not blindly overwrite
-existing skill folders.
-
-Install the required Compound Engineering skills and Graphify dependencies,
-and the relevant OpenSpec skills for OpenSpec projects. Determine what is
-already installed and compatible. Find and follow the current official
-installation instructions for missing dependencies; do not rely on remembered
-commands or assume one installation method stays valid forever. Verify their
-availability afterwards. Report any dependency that cannot be installed and
-the work it blocks. Do not silently treat a partial installation as complete.
-
-Never replace, truncate, or rewrite my user-level instruction file from
-the example. Treat examples/AGENTS.md as guidance to merge, not a file
-to copy over mine. Preserve existing instructions and their wording.
-Compare all example rules with existing instructions, and add only missing,
-compatible rules in a clearly delimited engineering-workflow block. Reuse
-an existing block when present; do not append duplicates. Do not remove
-existing rules during installation. If a rule conflicts with an existing
-instruction or merging would change its meaning, ask me to resolve it before
-changing that rule. A more detailed new rule is not automatically an approved
-exception to an existing instruction.
-
-Before changing the instruction file, create a uniquely named backup and
-report its path. If no rules are missing, leave the file unchanged. If the
-file does not exist, create it with the applicable rules. Check symlink or
-redirect targets before writing so the change stays within authorized scope.
-
-Validate installed files, verify dependencies, confirm unrelated instructions
-remain unchanged and repeated installation adds no duplicates, and report
-installed paths, backups, dependencies, and limitations. Distinguish file
-validation from host discovery: ask me to open a new chat to confirm the
-three skills and their dependencies are available there.
-
-Do not commit, push, publish, or modify unrelated settings during installation.
-Stay within the host's permissions and report any required user action.
+Install engineering-workflow and its dependencies, following:
+https://github.com/av-mamzikov/engineering-workflow/blob/main/INSTALL.md
 ```
 
-If the agent cannot access the repository URL, clone it into a directory of your choice and give the agent that local path. Cloning alone does not activate the skills. Resolve reported instruction conflicts before proceeding with the affected changes.
+[INSTALL.md](INSTALL.md) covers installation, updates, and removal. Existing user instructions are preserved: the agent adds only missing compatible rules and asks about conflicts. [examples/AGENTS.md](examples/AGENTS.md) is guidance to merge, not a replacement for your file.
 
-In a new chat, confirm that `engineering-workflow`, `engineering-code-review`, and `engineering-spec-review` are available, along with their dependencies. Then ask to use `$engineering-workflow`. Other tools may use different invocation syntax. Missing dependencies or independent reviewers must be reported; installation does not waive required review.
+## Use
 
-## Updates and removal
+After installation, open a new chat and confirm that the three skills and their dependencies are available. For example:
 
-For updates, ask the agent to compare the repository with installed skills and the instruction block, check dependencies using current official guidance, back up files it will change, and preserve local customizations and unrelated instructions. Resolve conflicting updates explicitly. Do not silently remove older guidance.
+```text
+Use $engineering-workflow to work on the existing OpenSpec change <change-name>.
+```
 
-For removal, ask the agent to remove only skill folders and rules introduced by this set, preserving subsequent edits and other instructions. Use backups as comparison sources. Restore a whole backup only after confirming that it will not discard newer instructions. Leave shared dependencies installed unless their removal is separately requested.
-
-There are no installation scripts or automatic updates. Publishing and installation are separate actions.
-
-## Rule placement
-
-The example preserves the original Graphify, branch naming, UI, and authorization rules, plus short routing to this set. Merge only rules not already present in your instructions.
-
-| Original rules | Destination |
-| --- | --- |
-| Graphify queries, report fallback, hooks, no manual update after edits | `examples/AGENTS.md`, Graphify section |
-| Task ID branch naming, explicit name override, no invented IDs or renaming | `examples/AGENTS.md`, Git branch naming section |
-| Inspect existing UI equivalents and reuse conventions | `examples/AGENTS.md`, UI conventions section |
-| Default CE usage, stage selection, read full applicable skills | Example routing and `engineering-workflow` |
-| Governing requirements, contradictions, approved exceptions | `engineering-spec-review` |
-| Independent document re-review after corrections and blocker handling | `engineering-spec-review` |
-| Independent review after every code implementation, including small changes | Example routing and `engineering-code-review` |
-| Review evidence, fixes, checks, repeat review, disputed findings, serious vs minor | Review skills |
-| Delegation scopes, context, main-agent responsibility | `engineering-workflow` |
-| OpenSpec sources, skills, approved decisions, existing change artifacts | `engineering-workflow` and specification review guidance |
-| Relevant stages, agreed plans, tests, scenarios, actual results and limitations | `engineering-workflow` |
-| Autonomous work within scope, no expanded external-action authority | Example guidance and workflow safeguards |
+Skill invocation syntax may differ in other tools. The set does not install itself or run updates automatically.

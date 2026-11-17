@@ -1,6 +1,6 @@
 ---
 name: engineering-workflow
-description: Coordinate non-trivial engineering work using installed Compound Engineering skills, approved requirements, and relevant OpenSpec workflows. Use for implementation, investigation, planning, and engineering document work; includes required review handoffs.
+description: Combine project OpenSpec guidance with Compound Engineering skills for non-trivial engineering work, from requirements and planning through implementation and independent review. Also supports projects without OpenSpec using their existing requirements and plans.
 ---
 
 # Engineering workflow
@@ -29,7 +29,11 @@ Verify behavior with appropriate tests and acceptance scenarios. Report actual r
 
 Also use available OpenSpec skills. First read `openspec/README.md`, relevant specifications, and current change documents when present. Follow the project's documented change workflow, approved requirements, and acceptance scenarios. Distinguish proposals from agreed decisions.
 
+Use OpenSpec for the project's specification and change structure, and Compound Engineering for the relevant work procedures. Pass the governing requirements, current change documents, and agreed plans into each selected CE stage. CE brainstorming and planning must respect the project's approval state; they do not turn a proposal into an approved requirement.
+
 When working within an existing OpenSpec change, keep plans and verification evidence in that change structure. Avoid duplicate specifications and plans. Missing project guidance or unresolved approval status must be reported when it prevents correct work; do not invent approvals or exceptions.
+
+If a CE skill's default artifact location would create a parallel plan or specification, use the project's existing change structure for the authorized work. If the project workflow and a required skill cannot be reconciled within that scope, report the conflict instead of silently bypassing either requirement. Do not initialize OpenSpec merely to run this set; in projects without OpenSpec, use the existing project requirements and plans with the same verification and review rules.
 
 ## Delegate with clear boundaries
 
