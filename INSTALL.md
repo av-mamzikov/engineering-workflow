@@ -4,7 +4,7 @@ Instructions for Codex or another compatible coding agent installing this set on
 
 ## Inspect the environment
 
-Read [README.md](README.md), all four files under `skills/*/SKILL.md`, [examples/AGENTS.md](examples/AGENTS.md), and the existing user-level instructions before changing anything. If repository URLs cannot be read, obtain a local checkout and use that path. Cloning alone does not activate skills.
+Read [README.md](README.md), each file under `skills/*/SKILL.md`, [examples/AGENTS.md](examples/AGENTS.md), and the existing user-level instructions before changing anything. If repository URLs cannot be read, obtain a local checkout and use that path. Cloning alone does not activate skills.
 
 For Codex, use `CODEX_HOME` when set, otherwise `~/.codex`. For other tools, check their current documented skill and instruction locations and compatibility; do not assume Codex paths or invocation syntax apply. Check skill support and independent subagent capability. Report unsupported capabilities and affected work rather than treating an incompatible installation as complete.
 
@@ -12,9 +12,10 @@ Stay within the user's authorized scope and host permissions. Check symlink or r
 
 ## Install skills and dependencies
 
-Install these four folders from `skills/` into the user-level skills directory as separate discoverable skills:
+Install these folders from `skills/` into the user-level skills directory as separate discoverable skills:
 
 - `engineering-setup`
+- `engineering-requirements`
 - `engineering-workflow`
 - `engineering-code-review`
 - `engineering-spec-review`
@@ -41,13 +42,13 @@ Before changing the instruction file, create a uniquely named backup and report 
 
 ## Validate and report
 
-Check that all four installed skills match the intended installation, Compound Engineering is accessible, unrelated instructions remain unchanged, and repeating installation would not add duplicates. Report installed paths, changes, backup paths, plugin status, and limitations. Explicitly report OpenSpec and Graphify as deferred until project use rather than claiming they were verified.
+Check that all five installed skills match the intended installation, Compound Engineering is accessible, unrelated instructions remain unchanged, and repeating installation would not add duplicates. Report installed paths, changes, backup paths, plugin status, and limitations. Explicitly report OpenSpec and Graphify as deferred until project use rather than claiming they were verified.
 
-Distinguish file validation from discovery by the host. Ask the user to open a new chat and confirm that all four skills and the Compound Engineering capabilities are available there. Do not claim a live installation or discovery check that was not performed.
+Distinguish file validation from discovery by the host. Ask the user to open a new chat and confirm that all five skills and the Compound Engineering capabilities are available there. Do not claim a live installation or discovery check that was not performed.
 
 ## Update
 
-Compare the current repository with installed skills and the instruction block, including the new `engineering-setup` folder when upgrading an older three-skill installation. Check Compound Engineering using current official guidance; leave OpenSpec and Graphify checks for project use. Back up files before changing them and preserve local customizations and unrelated instructions. Resolve conflicting updates explicitly. Do not silently remove older guidance.
+Compare the current repository with installed skills and the instruction block. Add `engineering-requirements` when upgrading the four-skill set, and also `engineering-setup` for older three-skill installations. Update the routing in `engineering-workflow` and merge the matching instruction changes. Check Compound Engineering using current official guidance; leave OpenSpec and Graphify checks for project use. Back up files before changing them and preserve local customizations and unrelated instructions. Resolve conflicting updates explicitly. Do not silently remove older guidance.
 
 ## Remove
 

@@ -1,5 +1,7 @@
 ## Engineering workflow
 
+Use `engineering-requirements` to turn a product brief or change request into reviewed requirements with an explicit approval status. For a requirements-only request, finish at that handoff. When planning is requested, use the canonical requirements documents as input.
+
 For non-trivial engineering work, use `engineering-workflow` and applicable installed Compound Engineering skills by default. Read each relevant `SKILL.md` in full before applying it. Use `engineering-spec-review` for requirements, specification, and plan reviews, including independent re-review after corrections. After any implementation that changes code, including small changes, use `engineering-code-review`: independent subagent review and re-review after fixes are mandatory. If a required skill or reviewer is unavailable, report the limitation; do not silently waive required review or declare the affected work complete.
 
 Before using OpenSpec or Graphify in a project, use `engineering-setup` to check and prepare the dependency needed for that operation. Reuse a still-valid readiness check from the current task. Installing this skill set does not initialize those tools in projects.

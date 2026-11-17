@@ -1,6 +1,6 @@
 ---
 name: engineering-workflow
-description: Combine project OpenSpec guidance with Compound Engineering skills for non-trivial engineering work, from requirements and planning through implementation and independent review. Also supports projects without OpenSpec using their existing requirements and plans.
+description: Coordinate OpenSpec and Compound Engineering from creating or changing requirements through planning, implementation, and independent review. Also supports projects without OpenSpec.
 ---
 
 # Engineering workflow
@@ -19,13 +19,15 @@ Use only relevant stages and reuse agreed plans:
 
 | Task | Installed skill |
 | --- | --- |
-| Explore requirements | `ce-brainstorm` |
+| Create initial requirements or change existing requirements | `engineering-requirements`, with `ce-brainstorm` for exploration |
 | Plan work | `ce-plan` |
 | Review requirements, specifications, or plans | `engineering-spec-review`, using `ce-doc-review` |
 | Implement agreed work | `ce-work` |
 | Investigate a bug | `ce-debug` |
 | Review any implementation that changes code | `engineering-code-review`, using `ce-code-review` |
 | Relevant browser checks | `ce-test-browser` |
+
+Route an idea or change request that needs requirements to `engineering-requirements`. For a requirements-only request, return its reviewed documents, approval status, and blockers. When planning is also in scope, give `ce-plan` the canonical requirements paths, decisions, and open questions. Follow the project's approval rules and plan only the scope ready for planning. If suitable requirements already exist, use them directly.
 
 The companion skills are part of this set and must also be installed. If a required dependency is missing, identify it and report which work is affected. Continue independent authorized work, but do not silently substitute a self-review for required independent review or declare affected work complete.
 
