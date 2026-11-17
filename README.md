@@ -38,7 +38,8 @@ Installation includes checking existing dependencies and installing missing ones
 Give Codex or another compatible coding agent this request:
 
 ```text
-Install engineering-workflow and its dependencies, following:
+Install engineering-workflow. Check its dependencies and install any missing
+ones using their current official instructions. Follow:
 https://github.com/av-mamzikov/engineering-workflow/blob/main/INSTALL.md
 ```
 
