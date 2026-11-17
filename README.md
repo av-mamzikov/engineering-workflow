@@ -2,7 +2,7 @@
 
 Use OpenSpec and Compound Engineering together to turn a product idea or a change request into reviewed requirements, then plan and implement the agreed work.
 
-OpenSpec provides the project's specifications and change workflow. Compound Engineering provides specialist skills for exploring requirements, planning, debugging, implementation, and review. This set connects them: work follows the project's approved requirements, stays in the existing change structure, and returns to independent review after corrections.
+OpenSpec provides the project's specifications and change workflow. Compound Engineering provides specialist skills for exploring requirements, planning, debugging, implementation, and review. Use the project's approved requirements and keep work in the existing change. After corrections, have an independent reviewer check the changes again.
 
 ## How they work together
 
@@ -49,12 +49,10 @@ https://github.com/av-mamzikov/engineering-workflow/blob/main/INSTALL.md
 To update an existing installation after this repository changes:
 
 ```text
-Update my installed engineering-workflow skill set from the current version at:
-https://github.com/av-mamzikov/engineering-workflow
-Read INSTALL.md and follow its Update instructions. Compare the repository with
-my installed skills and user instructions, back up files before changing them,
-and preserve local customizations. Ask me to resolve conflicting changes.
-Report what changed, any limitations, and whether I need to open a new chat.
+Update my installed skills and instructions using the Update section of
+https://github.com/av-mamzikov/engineering-workflow/blob/main/INSTALL.md
+Keep my local changes and ask me about conflicts. Tell me what changed
+and whether I need to do anything else.
 ```
 
 ## Use
@@ -62,15 +60,11 @@ Report what changed, any limitations, and whether I need to open a new chat.
 To learn about this project before installing it or choosing a skill:
 
 ```text
-Read the engineering-workflow repository at:
-https://github.com/av-mamzikov/engineering-workflow
-Start with README.md, INSTALL.md, and the skills/*/SKILL.md files. Explain what
-the project does, what each skill is for, and how it works with Compound
-Engineering, OpenSpec, and Graphify. Give example prompts for a new product,
-an existing project change, debugging, and review. Explain which stages apply
-to each example, what needs my approval, and what dependencies are required.
-Use the current repository contents and identify anything you cannot verify.
-This is an explanation request; do not install or change anything.
+What is https://github.com/av-mamzikov/engineering-workflow for?
+If I start with just an idea, how do I use the skills to define the first
+release, plan it, build it, and review it?
+Which skill should I use to plan a feature, fix a bug, or review a change?
+Show me what I could ask in each case.
 ```
 
 After installation, open a new chat and confirm that all five skills and Compound Engineering are available. For a new product you can start directly with requirements. For an existing change the workflow routes the request to the same skill.

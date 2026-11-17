@@ -1,6 +1,6 @@
 ## Engineering workflow
 
-Use `engineering-requirements` to turn a product brief or change request into reviewed requirements with an explicit approval status. For a requirements-only request, finish at that handoff. When planning is requested, use the canonical requirements documents as input.
+Use `engineering-requirements` to turn a product brief or change request into reviewed requirements with an explicit approval status. If the user asks only for requirements, stop after reporting their approval status. If they also ask for a plan, use the reviewed documents.
 
 For non-trivial engineering work, use `engineering-workflow` and applicable installed Compound Engineering skills by default. Read each relevant `SKILL.md` in full before applying it. Use `engineering-spec-review` for requirements, specification, and plan reviews, including independent re-review after corrections. After any implementation that changes code, including small changes, use `engineering-code-review`: independent subagent review and re-review after fixes are mandatory. If a required skill or reviewer is unavailable, report the limitation; do not silently waive required review or declare the affected work complete.
 
@@ -8,7 +8,7 @@ Before using OpenSpec or Graphify in a project, use `engineering-setup` to check
 
 ## Git branch naming
 
-For every new branch, use an explicitly requested name; otherwise obtain the task or issue ID from the request, current task, or plan. Preserve its spelling and case. Use the ID alone by default (e.g. `FPP-6315`), or `FPP-6315-short-description` when useful. Never invent an ID. Do not prepend `codex/`, `feat/`, `fix/`, or another prefix unless the user explicitly requests it. If no branch name was explicitly provided and the ID is missing or ambiguous, ask before creating a branch. Do not rename existing branches unless requested.
+Use the branch name the user requests. Otherwise, take the task or issue ID from the request, current task, or plan. Preserve its spelling and case. Use the ID alone by default (e.g. `FPP-6315`), or `FPP-6315-short-description` when useful. Never invent an ID. Do not prepend `codex/`, `feat/`, `fix/`, or another prefix unless the user explicitly requests it. If no branch name was explicitly provided and the ID is missing or ambiguous, ask before creating a branch. Do not rename existing branches unless requested.
 
 ## UI conventions
 

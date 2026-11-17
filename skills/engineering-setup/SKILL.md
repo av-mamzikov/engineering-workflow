@@ -5,13 +5,13 @@ description: Check and prepare dependencies for a specific project before using 
 
 # Project dependency setup
 
-Prepare the target project for the dependencies the requested work will actually use. This is separate from installing the engineering-workflow skill set into the user's environment.
+Check and prepare dependencies in the target project. The user-level installer handles the engineering-workflow skills.
 
 ## Establish scope
 
 Resolve the target project from the user's request or current workspace. Read its applicable instructions and inspect existing dependency configuration. If the project is ambiguous, ask before making project changes.
 
-Determine which dependencies are needed now. Before OpenSpec work, check OpenSpec; before Graphify use, check Graphify. Do not require or install both for an unrelated task. For a general readiness check, inspect both and report their status, but inspection alone is not authorization to initialize unused tools.
+Check OpenSpec when the task needs OpenSpec. Check Graphify when it needs Graphify. Install only what the task requires. For a general readiness check, inspect both and report their status, but inspection alone is not authorization to initialize unused tools.
 
 ## Check the right level
 

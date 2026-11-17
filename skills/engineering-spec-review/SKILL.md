@@ -5,13 +5,13 @@ description: Review engineering requirements, specifications, and plans against 
 
 # Specification and plan review
 
-Use the installed `ce-doc-review` skill where applicable and read its `SKILL.md` in full. Apply to requirements, specifications, and plans. Before OpenSpec operations in a project, use `engineering-setup` to check its readiness; reuse a still-valid check from the current task. Then read `openspec/README.md`, relevant specifications, and current change documents, and use available OpenSpec skills. Keep plans and verification evidence inside the existing change structure; avoid duplicate specifications and plans. Projects without OpenSpec use their existing requirements and plans; do not initialize it for a review.
+Use the installed `ce-doc-review` skill where applicable and read its `SKILL.md` in full. Apply to requirements, specifications, and plans. Before using OpenSpec, check the project with `engineering-setup` or reuse a still-valid check from this task. Then read `openspec/README.md`, relevant specifications, and current change documents, and use available OpenSpec skills. Keep plans and verification evidence inside the existing change structure; avoid duplicate specifications and plans. Projects without OpenSpec use their existing requirements and plans; do not initialize it for a review.
 
 ## Establish governing sources
 
 Give reviewers readable paths to the documents being reviewed, applicable main specifications, general requirements, project guidance, and evidence of approved decisions. Require them to read these sources, not just a summary of the proposed changes. Distinguish proposals from agreed requirements and acceptance scenarios.
 
-Check specific scenarios and exceptions against the general requirements. Report contradictions with references to both conflicting statements. Greater specificity or detail does not itself establish an agreed exception: require explicit evidence of approval. If a governing source or approval evidence cannot be found, report the gap and its effect rather than inventing an exception.
+Check specific scenarios and exceptions against the general requirements. Report contradictions with references to both conflicting statements. Require explicit evidence that the exception was approved. If a governing source or approval evidence cannot be found, report the gap and its effect rather than inventing an exception.
 
 ## Evaluate findings and correct documents
 
@@ -19,7 +19,7 @@ The main agent evaluates findings against the governing sources and fixes substa
 
 ## Independent re-review after corrections
 
-After fixing document review findings, including findings in requirements, specifications, and plans, have a separate subagent review the updated documents again using `ce-doc-review` where applicable. Provide the updated documents and governing source paths, and require source reading again. Main-agent self-review does not satisfy independent re-review. A reviewer may be reused if it remains separate from the editing main agent and inspects the current documents.
+After fixing document review findings, including findings in requirements, specifications, and plans, have a separate subagent review the updated documents again using `ce-doc-review` where applicable. Give the reviewer the updated documents and paths to the governing sources. Require them to read both again. You may use the same reviewer if they are independent of the editing agent.
 
 Evaluate the new findings, fix substantiated issues, and repeat corrections and independent review until no substantiated serious findings remain. Minor recommendations do not block completion.
 

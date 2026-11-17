@@ -5,13 +5,13 @@ description: Require independent subagent review using ce-code-review after any 
 
 # Independent code review
 
-Apply after any implementation that changes code, including small changes. Use the installed `ce-code-review` skill and read its `SKILL.md` in full. Have a separate subagent review the changes using that skill; the implementing main agent's self-review does not satisfy this requirement.
+Apply after any implementation that changes code, including small changes. Use the installed `ce-code-review` skill and read its `SKILL.md` in full. Assign the review to a subagent separate from the main agent that made the changes.
 
 ## Give the reviewer evidence
 
 Provide the requirements and acceptance scenarios, scope of changes, exact files or diff to review, relevant project guidance, and verification results, including failures and unrun checks. Require the reviewer to inspect the actual updated changes and report findings with file references and concrete consequences.
 
-Bound review side effects to the authorized task. Review is not permission to commit, push, publish, or change unrelated files. If the skill or a separate reviewer is unavailable, report the blocker and remaining review requirement; do not declare the affected implementation complete.
+Stay within the authorized review scope. Committing, pushing, publishing, or changing unrelated files requires separate authorization. If the skill or a separate reviewer is unavailable, report the blocker and remaining review requirement; do not declare the affected implementation complete.
 
 ## Resolve and re-review
 
@@ -23,4 +23,4 @@ If repeated reviews make no meaningful progress, or resolving a serious issue re
 
 ## Report the outcome
 
-State the review scope, checks actually performed and their results, resolved serious findings, any remaining minor recommendations, and material limitations. Completion requires no substantiated serious findings and completion of required relevant verification.
+State the review scope, checks actually performed and their results, resolved serious findings, any remaining minor recommendations, and material limitations. Finish only when the required checks are complete and no substantiated serious findings remain.

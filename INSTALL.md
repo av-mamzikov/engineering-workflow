@@ -1,6 +1,6 @@
 # Install engineering-workflow
 
-Instructions for Codex or another compatible coding agent installing this set on the user's behalf. Install the user-level skill set and check the Compound Engineering plugin here. OpenSpec and Graphify are checked later in the target project, when used, through `engineering-setup`. Use current official dependency instructions; this document deliberately does not prescribe installation commands.
+Codex or another compatible coding agent can install these skills for the user. Check Compound Engineering during installation. Follow each dependency's current official instructions. Check OpenSpec or Graphify with `engineering-setup` when a project needs it.
 
 ## Inspect the environment
 
@@ -20,7 +20,7 @@ Install these folders from `skills/` into the user-level skills directory as sep
 - `engineering-code-review`
 - `engineering-spec-review`
 
-Inspect existing destination folders first. Leave identical skills unchanged. Back up files before updates, preserve local customizations, and ask if an update requires choosing between conflicting changes. Do not blindly overwrite existing skill folders.
+Inspect existing destination folders first. Leave identical skills unchanged. Back up files before updates, preserve local customizations, and ask if an update requires choosing between conflicting changes. Overwrite an existing file only after checking it for local changes.
 
 Check whether the Compound Engineering plugin is installed and accessible to the current agent. Reuse a compatible accessible installation, including a user-level one. Verify it provides the `ce-*` capabilities named by the workflow and review skills. These are skills supplied by one plugin, not separate dependencies to install individually.
 

@@ -9,13 +9,13 @@ Start with the user's idea, brief, or change request. Finish with reviewed requi
 
 ## Choose the working document
 
-Read the project instructions and locate the governing requirements, decision records, and any current change for this work. Choose one place to maintain the proposed requirements before running a document-producing skill.
+Read the project instructions and locate the governing requirements, decision records, and any current change for this work. Choose where to keep the draft before asking a skill to write it.
 
 - **OpenSpec project.** Use `engineering-setup` to check readiness. Read the project guidance (including `openspec/README.md` when present), the applicable main specs and active changes. Reuse the matching change or create one for the requested work. Follow the project's schema and installed OpenSpec skills to write just the requirements artifacts. For example, with the standard schema, use a scoped capture in `openspec-explore` where supported to write the proposal and capability spec deltas. Keep proposals in the change until the project's separate adoption step. If a full proposal command also generates design and tasks, use the supported individual artifact instructions instead.
 - **Project with its own requirements format.** Create or update the draft in that format and link to its governing sources.
 - **No established format.** In a Git project, request a requirements document from `ce-brainstorm` so reviewers have a file to read. In a new directory without a Git root, use the brief and the user's decisions to write a standalone `REQUIREMENTS.md` in the target directory. Adopt OpenSpec only on explicit request.
 
-Read the installed `ce-brainstorm` instructions. When its document is the chosen output, use its requirements workflow through capture. When the project owns the format, use its questions about actors, scope, alternatives and success during the project's exploration. Hold one discussion and write the decisions directly in the chosen document. Reuse an earlier brainstorm as source material when one already exists.
+Read the installed `ce-brainstorm` instructions. If `ce-brainstorm` will write the draft, follow its requirements workflow through capture. If the project has its own format, use the brainstorm questions to clarify who needs the change, its scope, the alternatives, and how to judge success. Hold one discussion and write the decisions directly in the chosen document. Reuse an earlier brainstorm as source material when one already exists.
 
 ## Work from the evidence for each capability
 

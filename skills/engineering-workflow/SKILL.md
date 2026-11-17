@@ -9,7 +9,7 @@ Apply the user's engineering conventions while using existing specialist skills.
 
 ## Check project dependencies when needed
 
-Use `engineering-setup` before the first OpenSpec or Graphify operation in the target project, and recheck if the project or dependency state changes. Check only the dependency needed for that operation; do not make unrelated work wait for unused project tools. Reuse verified readiness within the current task while it remains applicable.
+Use `engineering-setup` before the first OpenSpec or Graphify operation in the target project, and recheck if the project or dependency state changes. Check only what the operation needs. Reuse the result for the rest of the task while it remains valid.
 
 The set installer checks the Compound Engineering plugin, including user-level availability. If it later becomes unavailable, route the dependency problem through `engineering-setup`. Do not initialize OpenSpec merely because the skill set is installed or invoked.
 
@@ -31,7 +31,7 @@ Route an idea or change request that needs requirements to `engineering-requirem
 
 The companion skills are part of this set and must also be installed. If a required dependency is missing, identify it and report which work is affected. Continue independent authorized work, but do not silently substitute a self-review for required independent review or declare affected work complete.
 
-Verify behavior with appropriate tests and acceptance scenarios. Report actual results and material limitations. Even a small code change requires the independent review specified by `engineering-code-review`; the non-trivial-work threshold does not exempt it. When document review findings are corrected, follow the independent re-review loop in `engineering-spec-review`.
+Verify behavior with appropriate tests and acceptance scenarios. Report actual results and material limitations. Use `engineering-code-review` for every code change, including small fixes. When document review findings are corrected, follow the independent re-review loop in `engineering-spec-review`.
 
 ## OpenSpec projects
 
