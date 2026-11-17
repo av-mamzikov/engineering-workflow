@@ -1,77 +1,98 @@
 # Engineering workflow
 
-A set of personal Codex skills extracted from an existing user-level `AGENTS.md`. The instructions remain in English, matching the source.
+A set of personal Codex skills extracted from user-level guidance. The instructions remain in English, matching the source.
 
 ## Contents
 
-- `AGENTS.md`: shortened user-level guidance; install together with all three skills.
-- `skills/engineering-workflow`: selects relevant Compound Engineering stages, handles OpenSpec context, delegation, verification, and authorization.
+- `skills/engineering-workflow`: relevant Compound Engineering stages, OpenSpec context, delegation, verification, and authorization.
 - `skills/engineering-code-review`: independent code review and the fix-and-review loop.
 - `skills/engineering-spec-review`: governing requirements, approved exceptions, and independent document re-review after corrections.
+- `examples/AGENTS.md`: example guidance to merge into existing user-level instructions. It is not a replacement file or an installation target.
 
-The set complements existing skills. It does not include or modify Compound Engineering, Graphify, or OpenSpec skills.
+The set uses Compound Engineering, Graphify, and, in OpenSpec projects, the relevant OpenSpec skills. These dependencies are installed separately using their current supported methods; this repository does not vendor or modify them.
 
-## Local installation
+## Installation with Codex or another coding agent
 
-Cloning this repository does not activate the skills. Back up the current user-level `AGENTS.md` before replacing it.
+Ask Codex or a similar coding agent with filesystem access to install the set and its required dependencies. Copy this request into a new chat:
 
-1. Install the applicable Compound Engineering skills named in the workflow table. Keep the existing Graphify skill and any project-required OpenSpec skills available.
-2. Copy each of the three skill folders from `skills/` into your Codex user skills directory (`$CODEX_HOME/skills`, or `~/.codex/skills/` when unset). Copy the folders themselves, not a single enclosing `engineering-workflow/skills` directory.
-3. Replace the user-level `$CODEX_HOME/AGENTS.md` (default `~/.codex/AGENTS.md`) with the supplied `AGENTS.md` after checking any newer local changes.
-4. Check that all three skills are visible in a new chat before relying on the shortened guidance.
+```text
+Install the skills from https://github.com/av-mamzikov/engineering-workflow
+and their required dependencies into my coding agent environment.
 
-For the Windows setup used to author this set, run the following in PowerShell from the parent directory where you want to create the clone. The first two commands clone the repository and enter it:
+Before changing anything, read this repository's README.md, all three
+SKILL.md files, examples/AGENTS.md, and my existing user-level instructions.
+For Codex, use CODEX_HOME when set, otherwise ~/.codex. For another tool,
+check its current documented skill and instruction locations and compatibility;
+do not assume Codex paths apply. If the tool cannot support a required
+capability, including independent subagents, report the limitation.
 
-```powershell
-git clone https://github.com/av-mamzikov/engineering-workflow.git
-Set-Location engineering-workflow
+Install all three folders from skills/ as separate discoverable skills.
+Inspect existing destination folders first. Leave identical skills unchanged.
+Back up files before updates, preserve local customizations, and ask if an
+update requires choosing between conflicting changes. Do not blindly overwrite
+existing skill folders.
 
-$codexUserDir = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE '.codex' }
-$skillTargetDir = Join-Path $codexUserDir 'skills'
-$skillNames = @('engineering-workflow', 'engineering-code-review', 'engineering-spec-review')
+Install the required Compound Engineering skills and Graphify dependencies,
+and the relevant OpenSpec skills for OpenSpec projects. Determine what is
+already installed and compatible. Find and follow the current official
+installation instructions for missing dependencies; do not rely on remembered
+commands or assume one installation method stays valid forever. Verify their
+availability afterwards. Report any dependency that cannot be installed and
+the work it blocks. Do not silently treat a partial installation as complete.
 
-# Stop rather than overwrite any existing skill folder.
-foreach ($skillName in $skillNames) {
-    if (Test-Path -LiteralPath (Join-Path $skillTargetDir $skillName)) {
-        throw "Skill already exists: $skillName. Back it up and compare before updating."
-    }
-}
-New-Item -ItemType Directory -Path $skillTargetDir -Force -ErrorAction Stop | Out-Null
-foreach ($skillName in $skillNames) {
-    Copy-Item -LiteralPath (Join-Path 'skills' $skillName) -Destination $skillTargetDir -Recurse -ErrorAction Stop
-}
+Never replace, truncate, or rewrite my user-level instruction file from
+the example. Treat examples/AGENTS.md as guidance to merge, not a file
+to copy over mine. Preserve existing instructions and their wording.
+Compare all example rules with existing instructions, and add only missing,
+compatible rules in a clearly delimited engineering-workflow block. Reuse
+an existing block when present; do not append duplicates. Do not remove
+existing rules during installation. If a rule conflicts with an existing
+instruction or merging would change its meaning, ask me to resolve it before
+changing that rule. A more detailed new rule is not automatically an approved
+exception to an existing instruction.
 
-# Review the supplied AGENTS.md before running the replacement below.
-$userAgentsPath = Join-Path $codexUserDir 'AGENTS.md'
-if (Test-Path -LiteralPath $userAgentsPath) {
-    $agentsBackupPath = "$userAgentsPath.backup-$(Get-Date -Format 'yyyyMMdd-HHmmss-fff')"
-    Copy-Item -LiteralPath $userAgentsPath -Destination $agentsBackupPath -ErrorAction Stop
-    Write-Output "Backup: $agentsBackupPath"
-}
-Copy-Item -LiteralPath 'AGENTS.md' -Destination $userAgentsPath -ErrorAction Stop
+Before changing the instruction file, create a uniquely named backup and
+report its path. If no rules are missing, leave the file unchanged. If the
+file does not exist, create it with the applicable rules. Check symlink or
+redirect targets before writing so the change stays within authorized scope.
+
+Validate installed files, verify dependencies, confirm unrelated instructions
+remain unchanged and repeated installation adds no duplicates, and report
+installed paths, backups, dependencies, and limitations. Distinguish file
+validation from host discovery: ask me to open a new chat to confirm the
+three skills and their dependencies are available there.
+
+Do not commit, push, publish, or modify unrelated settings during installation.
+Stay within the host's permissions and report any required user action.
 ```
 
-On other platforms, follow the same manual copy steps using your shell. For updates, pull repository changes, compare installed files, and back them up before replacement; the first-install example deliberately stops when skill folders already exist. To roll back, restore the saved `AGENTS.md` and remove only the three skill folders installed from this set, or restore their previous backups.
+If the agent cannot access the repository URL, clone it into a directory of your choice and give the agent that local path. Cloning alone does not activate the skills. Resolve reported instruction conflicts before proceeding with the affected changes.
 
-In a new chat, ask to use `$engineering-workflow`, `$engineering-code-review`, or `$engineering-spec-review`. Confirm they appear in the available skills. These commands do not install the third-party dependencies: if a named skill is absent, the workflow reports the missing dependency and affected work.
+In a new chat, confirm that `engineering-workflow`, `engineering-code-review`, and `engineering-spec-review` are available, along with their dependencies. Then ask to use `$engineering-workflow`. Other tools may use different invocation syntax. Missing dependencies or independent reviewers must be reported; installation does not waive required review.
 
-There are no installation scripts or automatic updates. Publishing the repository and installing it are separate actions.
+## Updates and removal
+
+For updates, ask the agent to compare the repository with installed skills and the instruction block, check dependencies using current official guidance, back up files it will change, and preserve local customizations and unrelated instructions. Resolve conflicting updates explicitly. Do not silently remove older guidance.
+
+For removal, ask the agent to remove only skill folders and rules introduced by this set, preserving subsequent edits and other instructions. Use backups as comparison sources. Restore a whole backup only after confirming that it will not discard newer instructions. Leave shared dependencies installed unless their removal is separately requested.
+
+There are no installation scripts or automatic updates. Publishing and installation are separate actions.
 
 ## Rule placement
 
+The example preserves the original Graphify, branch naming, UI, and authorization rules, plus short routing to this set. Merge only rules not already present in your instructions.
+
 | Original rules | Destination |
 | --- | --- |
-| Graphify query order, focused commands, report fallback, hooks, no manual update after edits | `AGENTS.md`, Graphify section |
-| Task ID branch naming, explicit name override, no invented IDs or renaming | `AGENTS.md`, Git branch naming section |
-| Inspect existing UI equivalents and reuse project conventions | `AGENTS.md`, UI conventions section |
-| Default CE usage, stage selection, read full applicable skills | `AGENTS.md` routing and `engineering-workflow` |
-| Main specs and general requirements; contradictions and approved exceptions | `engineering-spec-review` |
-| Independent document re-review after corrections; evaluate, repeat, stop on blockers | `engineering-spec-review` |
-| Independent review after every code implementation, including small changes | `AGENTS.md` routing and `engineering-code-review` |
+| Graphify queries, report fallback, hooks, no manual update after edits | `examples/AGENTS.md`, Graphify section |
+| Task ID branch naming, explicit name override, no invented IDs or renaming | `examples/AGENTS.md`, Git branch naming section |
+| Inspect existing UI equivalents and reuse conventions | `examples/AGENTS.md`, UI conventions section |
+| Default CE usage, stage selection, read full applicable skills | Example routing and `engineering-workflow` |
+| Governing requirements, contradictions, approved exceptions | `engineering-spec-review` |
+| Independent document re-review after corrections and blocker handling | `engineering-spec-review` |
+| Independent review after every code implementation, including small changes | Example routing and `engineering-code-review` |
 | Review evidence, fixes, checks, repeat review, disputed findings, serious vs minor | Review skills |
-| Conditional delegation, example scopes, context and main-agent responsibility | `engineering-workflow` |
-| OpenSpec sources, available skills, approved decisions, existing change artifacts | `engineering-workflow` and relevant specification review guidance |
+| Delegation scopes, context, main-agent responsibility | `engineering-workflow` |
+| OpenSpec sources, skills, approved decisions, existing change artifacts | `engineering-workflow` and specification review guidance |
 | Relevant stages, agreed plans, tests, scenarios, actual results and limitations | `engineering-workflow` |
-| Autonomous work within scope; no expanded external-action authority | `AGENTS.md` and workflow safeguards |
-
-Unavailable dependencies or reviewers must be reported rather than silently waiving mandatory review. This clarifies failure handling without replacing the original requirements.
+| Autonomous work within scope, no expanded external-action authority | Example guidance and workflow safeguards |
