@@ -17,6 +17,8 @@ Stay within the authorized review scope. Committing, pushing, publishing, or cha
 
 The main agent evaluates each finding against requirements and evidence. Fix substantiated issues within authorized scope and rerun relevant checks. Record the rationale for accepting or rejecting disputed findings; reopen rejected findings only when new evidence warrants it.
 
+Before declaring the code change complete, run the project's full test suite on the final changed state, including review fixes. A component's full suite is sufficient only when the project has an established verification boundary for that independent component and the change stays within it. Reuse a completed full run only if it covers that final state. If the required run cannot be completed, report the reason, checks actually run and their results, and the remaining verification gap. Passing selected tests does not establish that the full suite passed; do not declare verification complete while required checks remain unrun or failing.
+
 After addressing findings, submit the updated changes to a separate subagent using `ce-code-review` again. A reviewer may be reused, but it must remain separate from the implementing main agent and inspect the current changes. Repeat corrections, relevant verification, and independent review until no substantiated serious findings remain, including behavioral bugs, regressions, requirements violations, and security issues. Minor recommendations do not block completion.
 
 If repeated reviews make no meaningful progress, or resolving a serious issue requires additional authorization or a user decision, report the blocker and unresolved serious findings. Do not repeat unchanged review cycles or declare the task complete.

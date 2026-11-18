@@ -31,7 +31,15 @@ Route an idea or change request that needs requirements to `engineering-requirem
 
 The companion skills are part of this set and must also be installed. If a required dependency is missing, identify it and report which work is affected. Continue independent authorized work, but do not silently substitute a self-review for required independent review or declare affected work complete.
 
-Verify behavior with appropriate tests and acceptance scenarios. Report actual results and material limitations. Use `engineering-code-review` for every code change, including small fixes. When document review findings are corrected, follow the independent re-review loop in `engineering-spec-review`.
+Use `engineering-code-review` for every code change, including small fixes. When document review findings are corrected, follow the independent re-review loop in `engineering-spec-review`.
+
+## Verify changes before completion
+
+During implementation and after fixes, run tests for the affected behavior and check the applicable acceptance scenarios. Before declaring a code change complete, run the project's full test suite on the final changed state. Use the full suite of an affected independent component instead only when the project has an established verification boundary for that component and the change stays within it. Apply this completion requirement regardless of the selected skill or execution mode, including when `ce-work` returns implementation to a caller; the main agent owns final verification.
+
+If the required full run cannot be completed, report why, which checks ran and their results, and the remaining verification gap. Passing selected tests does not establish that the full suite passed; do not declare verification complete while required checks remain unrun or failing.
+
+For documentation-only changes, run the applicable documentation checks. Report actual results and material limitations.
 
 ## OpenSpec projects
 
