@@ -7,6 +7,12 @@ description: Develop and review requirements for a new product or a change to an
 
 Start with the user's idea, brief, or change request. Finish with reviewed requirements and their approval status. Technical design, implementation tasks, and code belong to later work.
 
+## Choose the Git branch before writing
+
+When the request will write requirements or a specification in a Git repository, check the target checkout before the first write. This includes creating an OpenSpec change and handing off to a skill that will save a draft. Reuse the current branch if it is already for the task or the user chose it for this work. Skip the branch check for chat-only work and directories outside Git.
+
+Otherwise, offer to create a task branch (or reuse the matching branch if it exists) or proceed in the current checkout. Honor an explicit choice already made. Follow the project's branch naming rules and any name the user specified. If no name was given, use the task or issue ID with its original spelling and case as the branch name by default. If the ID is missing or ambiguous, ask for it or an explicit branch name before creating a branch. Create or switch branches only with the user's authorization, then verify the selected branch before writing.
+
 ## Choose the working document
 
 Read the project instructions and locate the governing requirements, decision records, and any current change for this work. Choose where to keep the draft before asking a skill to write it.
