@@ -11,6 +11,7 @@ OpenSpec provides the project's specifications and change workflow. Compound Eng
 3. **Check requirements.** Review specifications and plans against the governing requirements. A detailed scenario does not establish an approved exception to a general rule.
 4. **Implement and verify.** Work against the approved requirements and acceptance scenarios, using tests for the affected behavior and relevant browser checks during implementation and after fixes. Before declaring a code change complete, run the full test suite on the final changed state. A component's full suite is sufficient only within an established project verification boundary for that independent component. Report incomplete runs and remaining verification gaps; passing selected tests does not establish that the full suite passed. For documentation-only changes, run the applicable documentation checks.
 5. **Review independently.** After any implementation that changes code, including small changes, a separate subagent reviews it. After review fixes, submit the updated code or documents for independent review again. Resolve substantiated serious findings before declaring completion; report blockers when further progress requires a decision or authorization.
+6. **Close the OpenSpec change.** For an authorized autonomous task, finish verification, sync agreed delta specs if needed, then archive the change and verify the archive. If the user retains the readiness decision, report the checks and proposed closure steps before syncing or archiving.
 
 Use only the stages relevant to the task. In projects without OpenSpec, the set still applies Compound Engineering and the same review rules to the project's existing requirements and plans. It does not initialize OpenSpec automatically.
 
@@ -20,7 +21,7 @@ Use only the stages relevant to the task. In projects without OpenSpec, the set 
 | --- | --- |
 | [engineering-setup](skills/engineering-setup/SKILL.md) | Check and prepare OpenSpec or Graphify in the target project when needed; reuse accessible dependencies. |
 | [engineering-requirements](skills/engineering-requirements/SKILL.md) | Develop and review requirements for a new product or an existing project change, and record what has been approved. |
-| [engineering-workflow](skills/engineering-workflow/SKILL.md) | Coordinate OpenSpec context, Compound Engineering stages, delegation, and verification. |
+| [engineering-workflow](skills/engineering-workflow/SKILL.md) | Coordinate OpenSpec context, Compound Engineering stages, delegation, verification, and change closure. |
 | [engineering-code-review](skills/engineering-code-review/SKILL.md) | Require independent code review, evaluate findings, and repeat review after fixes. |
 | [engineering-spec-review](skills/engineering-spec-review/SKILL.md) | Check requirements, specifications, and plans against governing sources, with independent re-review after corrections. |
 

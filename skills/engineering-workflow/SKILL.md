@@ -1,6 +1,6 @@
 ---
 name: engineering-workflow
-description: Coordinate OpenSpec and Compound Engineering from creating or changing requirements through planning, implementation, and independent review. Also supports projects without OpenSpec.
+description: Coordinate OpenSpec and Compound Engineering from creating or changing requirements through planning, implementation, independent review, and completion. Also supports projects without OpenSpec.
 ---
 
 # Engineering workflow
@@ -40,6 +40,16 @@ During implementation and after fixes, run tests for the affected behavior and c
 If the required full run cannot be completed, report why, which checks ran and their results, and the remaining verification gap. Passing selected tests does not establish that the full suite passed; do not declare verification complete while required checks remain unrun or failing.
 
 For documentation-only changes, run the applicable documentation checks. Report actual results and material limitations.
+
+## Complete or hand off work
+
+When the user asks to solve or complete a task autonomously, the main agent owns the requested outcome and continues in the same turn through every applicable, authorized step. Respect any narrower endpoint the user specifies. A specialist's standalone completion message is a progress update in this workflow. When `openspec-apply-change` reports that all tracked tasks are complete, run any remaining checks, then invoke `openspec-archive-change` with the exact name of that change once it is ready. Reuse verification evidence that still covers the current state. On resumption, inspect the current state before repeating a completed step.
+
+An agreed OpenSpec change is ready for local closure when its required artifacts and tasks are complete, acceptance and final checks have passed, and independent review has no unresolved serious findings. Follow the project's closure rules. Assess the delta specs and show the sync summary as a progress update. Pass the user's autonomous completion request to the archive skill as their existing choice of **Sync now** when agreed delta specs need merging, or **Archive now** when they are already synced. If there are no delta specs, proceed directly to archive. Verify the sync when applicable, then verify the archived change before giving the final report.
+
+Continue without a routine handoff or repeated confirmation when the next step is already authorized. If the change cannot be identified, its required sync fails or is blocked, or closure requires an unresolved decision or approval, finish all independent work and report the specific blocker and pending step.
+
+In an assisted task, the user can retain the readiness decision. Give them the completed checks, any remaining gaps, and the proposed OpenSpec closure steps. When the readiness decision is theirs, stop before syncing or archiving and wait for their decision. If they already approved those steps, continue within that approval.
 
 ## OpenSpec projects
 
