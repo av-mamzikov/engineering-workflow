@@ -1,11 +1,11 @@
 ---
 name: engineering-requirements
-description: Develop and review requirements for a new product or a change to an existing one. Use when the user wants testable behavior and acceptance scenarios with an explicit approval status before technical planning.
+description: Develop and review requirements for a new or existing task, including work items that already contain requirements. Use when the user asks to work through or refine requirements, clarify expected behavior, or define acceptance scenarios before technical planning.
 ---
 
 # Engineering requirements
 
-Start with the user's idea, brief, or change request. Finish with reviewed requirements and their approval status. Technical design, implementation tasks, and code belong to later work.
+Start with the user's idea, brief, or task description. Use this workflow whenever the user intends to clarify or refine task requirements. Include clarification, acceptance scenarios, and review. Finish with reviewed requirements and their approval status. Technical design, implementation tasks, and code belong to later work.
 
 ## Choose the Git branch before writing
 
@@ -25,9 +25,13 @@ Read the installed `ce-brainstorm` instructions. If `ce-brainstorm` will write t
 
 ## Work from the evidence for each capability
 
+When the task already has requirements, use them as the starting draft. Check for gaps and conflicts against the governing requirements, specifications, and agreed decisions. Cite the conflicting statements when you report a conflict. Carry agreed decisions forward and reopen them only when new evidence reveals a material conflict.
+
 For **new behavior**, identify who needs it, what outcome matters, and what falls inside the first release. For **changed behavior**, locate the applicable rules and scenarios. Describe the intended difference and retain relevant guarantees, including exceptions and compatibility constraints. A single change may contain both kinds of work.
 
-When specifications are missing or disagree with implementation, identify what code, tests or reports actually demonstrate. Treat observations as evidence of current behavior. Trace a binding rule or an exception to a governing source or an explicit decision. Ask about unresolved choices that affect behavior and keep the affected requirement open if the answer is unavailable.
+When specifications are missing or disagree with implementation, identify what code, tests or reports actually demonstrate. Treat observations as evidence of current behavior. Trace a binding rule or an exception to a governing source or an explicit decision. Ask the user only about unresolved choices that materially affect behavior, scope, or acceptance after checking the available sources. Keep the affected requirement open if the answer is unavailable.
+
+When several of those choices can be answered independently, ask them in a single numbered round. Suggest an answer for each choice where the evidence supports one and explain the reason briefly. Ask dependent questions after the prerequisite choices are settled. For routine product choices in this workflow, this rule takes precedence over the one-question-per-turn format in ce-brainstorm.
 
 Write requirements in terms of observable outcomes. Use concrete acceptance scenarios for the normal case and for consequential boundaries or failures. Record the reasons for material decisions, sources, and questions that could change the scope. In OpenSpec, preserve applicable scenarios when replacing a requirement and run the project's validation for the change.
 
