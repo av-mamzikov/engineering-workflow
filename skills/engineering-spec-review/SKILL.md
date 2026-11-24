@@ -13,6 +13,8 @@ Give reviewers readable paths to the documents being reviewed, applicable main s
 
 Check specific scenarios and exceptions against the general requirements. Report contradictions with references to both conflicting statements. Require explicit evidence that the exception was approved. If a governing source or approval evidence cannot be found, report the gap and its effect rather than inventing an exception.
 
+Look for unnecessary scope as well as missing work. If a proposed element looks excessive, name it and check what would fail if it were removed or replaced with an existing mechanism. Recommend the simpler option when it preserves the requested outcome, approved decisions, project constraints, and required verification. Apply the same test before asking the author to add anything during review.
+
 For an OpenSpec change, use the same review and correction process for each artifact.
 
 - **Proposal and capability deltas.** Check that the acceptance scenarios cover the proposed outcome and boundaries, including relevant exceptions and compatibility guarantees. Surface unresolved product decisions for the decision owner.

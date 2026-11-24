@@ -21,7 +21,7 @@ Use only relevant stages and reuse agreed plans:
 | --- | --- |
 | Create initial requirements or change existing requirements | `engineering-requirements`, with `ce-brainstorm` for exploration |
 | Design an OpenSpec change through a reviewed implementation plan | `engineering-change-planning` |
-| Plan work in other projects | `ce-plan` |
+| Plan work in other projects | Use `ce-plan` for the simplest change that meets current requirements and project constraints. Prefer existing patterns and include the work needed to deliver and verify the change. |
 | Review a proposal, specifications, design, or implementation plan | `engineering-spec-review`, using `ce-doc-review` |
 | Implement agreed work | `ce-work` |
 | Investigate a bug | `ce-debug` |
