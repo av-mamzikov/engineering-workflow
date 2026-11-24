@@ -1,6 +1,6 @@
 ---
 name: engineering-workflow
-description: Coordinate OpenSpec and Compound Engineering from creating or changing requirements through planning, implementation, independent review, and completion. Also supports projects without OpenSpec.
+description: Run an engineering task end to end in interactive or autonomous mode. For OpenSpec, coordinate change planning, a planning commit, implementation and verification, sync and archive, and the final local commit. Also supports projects without OpenSpec.
 ---
 
 # Engineering workflow
@@ -20,18 +20,39 @@ Use only relevant stages and reuse agreed plans:
 | Task | Installed skill |
 | --- | --- |
 | Create initial requirements or change existing requirements | `engineering-requirements`, with `ce-brainstorm` for exploration |
-| Plan work | `ce-plan` |
-| Review requirements, specifications, or plans | `engineering-spec-review`, using `ce-doc-review` |
+| Design an OpenSpec change through a reviewed implementation plan | `engineering-change-planning` |
+| Plan work in other projects | `ce-plan` |
+| Review a proposal, specifications, design, or implementation plan | `engineering-spec-review`, using `ce-doc-review` |
 | Implement agreed work | `ce-work` |
 | Investigate a bug | `ce-debug` |
 | Review any implementation that changes code | `engineering-code-review`, using `ce-code-review` |
 | Relevant browser checks | `ce-test-browser` |
 
-Route an idea or change request that needs requirements to `engineering-requirements`. For a requirements-only request, return its reviewed documents, approval status, and blockers. When planning is also in scope, give `ce-plan` the canonical requirements paths, decisions, and open questions. Follow the project's approval rules and plan only the scope ready for planning. If suitable requirements already exist, use them directly.
+For “проработай требования”, use `engineering-requirements` and stop with reviewed requirements and their approval status. For “спроектируй изменение”, use `engineering-change-planning` and stop with its reviewed plan. For an end-to-end OpenSpec task, follow the full cycle below. In projects without OpenSpec, use the project's existing requirements and plan, implementation, and review procedures. OpenSpec adoption requires an explicit request.
 
 The companion skills are part of this set and must also be installed. If a required dependency is missing, identify it and report which work is affected. Continue independent authorized work, but do not silently substitute a self-review for required independent review or declare affected work complete.
 
-Use `engineering-code-review` for every code change, including small fixes. When document review findings are corrected, follow the independent re-review loop in `engineering-spec-review`.
+Use the same review process for proposals, requirements, designs, plans, and code. An independent reviewer reports findings with evidence. The main agent evaluates them, applies substantiated fixes, and submits the revised work for independent re-review. In autonomous mode, the main agent accepts or rejects findings within the approved scope and records the reason for disputed decisions. Follow `engineering-spec-review` for documents and `engineering-code-review` for every code change, including small fixes.
+
+## Choose the operating mode
+
+Use interactive mode unless the user requests autonomous work. Carry the requested endpoint, decision owner, explicit constraints, and permissions into specialist handoffs.
+
+- **Interactive.** Ask the user about material alternatives during planning. Present the reviewed requirements and design for their approval at their respective stages. Reuse explicit decisions that already cover the current version. If the user reserved the closure decision, present verification results and wait for their decision before sync and archive.
+- **Autonomous.** A request such as “реализуй задачу автономно” delegates in-scope requirements and design decisions to the coordinator for the full cycle. Make those decisions from the brief, project rules, and independent reviews, and record the decision and its rationale under the coordinator's name. Refer changes to explicit user conditions, choices outside the delegated scope, and approvals reserved for a human back to the user. Continue independent work while a required decision is pending.
+
+A request for the full OpenSpec cycle in either mode authorizes its two local commits, sync, and archive. An explicitly narrower endpoint or Git restriction takes precedence over the sequence below. Requirements-only and planning-only requests end at their handoff unless the user also asks to commit. Pushes, PRs, and publication require their own authorization.
+
+## Full OpenSpec cycle
+
+1. **Design the change.** Hand the scope and mode to `engineering-change-planning`. Use its reviewed, validated change as the input to implementation. Reuse current review and approval evidence for an existing change.
+2. **Commit the reviewed change.** Before implementation, make a local commit containing the active change's planning artifacts and associated review evidence. Inspect the commit and retain its SHA. If the exact reviewed change is already committed on the current branch, reuse that commit. When this commit is part of the requested cycle, its failure blocks implementation.
+3. **Implement the plan.** Follow the project's OpenSpec apply skill (typically `openspec-apply-change`) in the selected checkout. Use the reviewed tasks and planning commit as inputs. Apply `ce-work`'s implementation and local verification procedures. When its execution mode requires per-unit commits, run those procedures directly under the coordinator and leave edits, tests, and task updates in the worktree. The coordinator owns both commits and closure.
+4. **Verify and correct.** Check acceptance scenarios, run the verification below, and obtain independent code review for every code change. Return implementation defects to step 3, rerun affected checks and re-review corrections. If the requirements or design need revision, return to the affected planning stage and revalidate dependent tasks before continuing. Preserve the original planning commit and include the reviewed revisions in the final archived change. Advance only after required checks pass on the final implementation and no substantiated serious findings remain.
+5. **Sync and archive.** Confirm that required artifacts and tasks are complete and the project permits closure. Show the delta summary. Use the project's sync and archive procedure for the exact change, verifying applicable deltas in the main specs and the change in its archive. For `openspec-archive-change`, a full-cycle request supplies **Sync now** when deltas need merging or **Archive now** when already synced, subject to any closure decision the user reserved. With no deltas, proceed directly to archive. A failed sync or archive blocks the final commit.
+6. **Commit the verified result.** After verifying the archive, commit the implementation, tests, synced specs, and the move from the active change directory to the archive together. Check the commit contents and that all task-owned changes are accounted for. Report the planning and final commit SHAs, archived change path, and verification results.
+
+For both commits, inspect the index and working tree. Include only task-owned changes, including additions and removals, and preserve unrelated staged and unstaged work. On resumption, inspect Git history, implementation state, and the active or archived change. Continue from the first unfinished step with evidence that still matches the current state. If the final commit failed after a successful archive, verify the archive and retry that commit directly.
 
 ## Verify changes before completion
 
@@ -40,16 +61,6 @@ During implementation and after fixes, run tests for the affected behavior and c
 If the required full run cannot be completed, report why, which checks ran and their results, and the remaining verification gap. Passing selected tests does not establish that the full suite passed; do not declare verification complete while required checks remain unrun or failing.
 
 For documentation-only changes, run the applicable documentation checks. Report actual results and material limitations.
-
-## Complete or hand off work
-
-When the user asks to solve or complete a task autonomously, the main agent owns the requested outcome and continues in the same turn through every applicable, authorized step. Respect any narrower endpoint the user specifies. A specialist's standalone completion message is a progress update in this workflow. When `openspec-apply-change` reports that all tracked tasks are complete, run any remaining checks, then invoke `openspec-archive-change` with the exact name of that change once it is ready. Reuse verification evidence that still covers the current state. On resumption, inspect the current state before repeating a completed step.
-
-An agreed OpenSpec change is ready for local closure when its required artifacts and tasks are complete, acceptance and final checks have passed, and independent review has no unresolved serious findings. Follow the project's closure rules. Assess the delta specs and show the sync summary as a progress update. Pass the user's autonomous completion request to the archive skill as their existing choice of **Sync now** when agreed delta specs need merging, or **Archive now** when they are already synced. If there are no delta specs, proceed directly to archive. Verify the sync when applicable, then verify the archived change before giving the final report.
-
-Continue without a routine handoff or repeated confirmation when the next step is already authorized. If the change cannot be identified, its required sync fails or is blocked, or closure requires an unresolved decision or approval, finish all independent work and report the specific blocker and pending step.
-
-In an assisted task, the user can retain the readiness decision. Give them the completed checks, any remaining gaps, and the proposed OpenSpec closure steps. When the readiness decision is theirs, stop before syncing or archiving and wait for their decision. If they already approved those steps, continue within that approval.
 
 ## OpenSpec projects
 

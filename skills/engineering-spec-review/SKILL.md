@@ -1,11 +1,11 @@
 ---
 name: engineering-spec-review
-description: Review engineering requirements, specifications, and plans against governing requirements and approved decisions, using ce-doc-review. Require independent subagent re-review after correcting document review findings.
+description: Review engineering proposals, requirements, designs, and implementation plans against governing requirements and approved decisions using ce-doc-review. Require independent subagent re-review after corrections.
 ---
 
 # Specification and plan review
 
-Use the installed `ce-doc-review` skill where applicable and read its `SKILL.md` in full. Apply to requirements, specifications, and plans. Before using OpenSpec, check the project with `engineering-setup` or reuse a still-valid check from this task. Then read `openspec/README.md`, relevant specifications, and current change documents, and use available OpenSpec skills. Keep plans and verification evidence inside the existing change structure; avoid duplicate specifications and plans. Projects without OpenSpec use their existing requirements and plans; do not initialize it for a review.
+Use the installed `ce-doc-review` skill where applicable and read its `SKILL.md` in full. Apply to proposals, requirements, specifications, designs, and plans. Before using OpenSpec, check the project with `engineering-setup` or reuse a still-valid check from this task. Then read `openspec/README.md`, relevant specifications, and current change documents, and use available OpenSpec skills. Keep plans and verification evidence inside the existing change structure; avoid duplicate specifications and plans. Projects without OpenSpec use their existing requirements and plans; do not initialize it for a review.
 
 ## Establish governing sources
 
@@ -13,9 +13,17 @@ Give reviewers readable paths to the documents being reviewed, applicable main s
 
 Check specific scenarios and exceptions against the general requirements. Report contradictions with references to both conflicting statements. Require explicit evidence that the exception was approved. If a governing source or approval evidence cannot be found, report the gap and its effect rather than inventing an exception.
 
+For an OpenSpec change, use the same review and correction process for each artifact.
+
+- **Proposal and capability deltas.** Check that the acceptance scenarios cover the proposed outcome and boundaries, including relevant exceptions and compatibility guarantees. Surface unresolved product decisions for the decision owner.
+- **Design.** Trace the affected UI states, API behavior, and architectural choices to the approved scenarios and project conventions. Identify any design decision that changes an agreed requirement.
+- **Implementation plan.** Check that every agreed scenario and material design decision is covered by a task or verification step, prerequisites precede dependent work, and tasks stay within scope. Check migration and compatibility work when the approved design calls for it.
+
+Report the review verdict separately from approval. In `engineering-change-planning`, the user approves reviewed requirements and design in interactive mode. In autonomous mode, the coordinator may approve decisions within the user's delegation. Attribute each approval to its actual owner. The plan review establishes readiness for the handoff requested by the caller.
+
 ## Evaluate findings and correct documents
 
-The main agent evaluates findings against the governing sources and fixes substantiated issues within authorized scope. Record the rationale for accepting or rejecting disputed findings; reopen rejected findings only when new evidence warrants it. Keep decisions and verification evidence in the project's established artifact structure, including the existing OpenSpec change when applicable.
+Ask the independent reviewer to identify errors and omissions, cite the relevant passages, and explain their consequences. The main agent coordinates the review. In autonomous mode, it decides which findings to accept or reject within the authorized scope and applies the accepted corrections without asking the user to triage them. Record the basis for disputed decisions and reopen rejected findings only when new evidence warrants it. If a correction would change a user-approved requirement or design decision, return that decision to the user. Keep decisions and verification evidence with the reviewed artifact in the project's existing structure.
 
 ## Independent re-review after corrections
 

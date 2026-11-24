@@ -1,6 +1,6 @@
 ## Engineering workflow
 
-Use `engineering-requirements` to turn a product brief or change request into reviewed requirements with an explicit approval status. If the user asks only for requirements, stop after reporting their approval status. If they also ask for a plan, use the reviewed documents.
+Use `engineering-requirements` for requirements alone and `engineering-change-planning` to design an OpenSpec change through a reviewed implementation plan. Stop at the requested endpoint. Use `engineering-workflow` for the full cycle. Interactive planning asks the user to approve requirements and design. An autonomous request delegates those in-scope decisions to the coordinator, subject to explicit constraints and project approval rules.
 
 For non-trivial engineering work, use `engineering-workflow` and applicable installed Compound Engineering skills by default. Read each relevant `SKILL.md` in full before applying it. Use `engineering-spec-review` for requirements, specification, and plan reviews, including independent re-review after corrections. After any implementation that changes code, including small changes, use `engineering-code-review`: independent subagent review and re-review after fixes are mandatory. If a required skill or reviewer is unavailable, report the limitation; do not silently waive required review or declare the affected work complete.
 
@@ -20,4 +20,4 @@ When the user requests `$graphify`, read and follow the installed Graphify skill
 
 ## Authorization
 
-Continue autonomously within the authorized scope. Skills do not authorize commits, pushes, publishing, or other external actions.
+An explicit full-cycle OpenSpec request includes a local commit of the reviewed change before implementation and a final local commit after verification, sync, and archive. Honor narrower instructions. Pushes, publication, and other external actions require separate authorization.

@@ -6,12 +6,17 @@ OpenSpec provides the project's specifications and change workflow. Compound Eng
 
 ## How they work together
 
-1. **Establish the requirements.** Use existing requirements when they cover the work. For a new product or a change to existing behavior, use `engineering-requirements` to develop acceptance scenarios, review them, and record the approval status. A requirements-only request ends with this handoff.
-2. **Choose the work needed.** Use the relevant Compound Engineering skills and reuse agreed plans. In an OpenSpec change, keep plans and verification evidence alongside that change instead of creating parallel documents.
-3. **Check requirements.** Review specifications and plans against the governing requirements. A detailed scenario does not establish an approved exception to a general rule.
-4. **Implement and verify.** Work against the approved requirements and acceptance scenarios, using tests for the affected behavior and relevant browser checks during implementation and after fixes. Before declaring a code change complete, run the full test suite on the final changed state. A component's full suite is sufficient only within an established project verification boundary for that independent component. Report incomplete runs and remaining verification gaps; passing selected tests does not establish that the full suite passed. For documentation-only changes, run the applicable documentation checks.
-5. **Review independently.** After any implementation that changes code, including small changes, a separate subagent reviews it. After review fixes, submit the updated code or documents for independent review again. Resolve substantiated serious findings before declaring completion; report blockers when further progress requires a decision or authorization.
-6. **Close the OpenSpec change.** For an authorized autonomous task, finish verification, sync agreed delta specs if needed, then archive the change and verify the archive. If the user retains the readiness decision, report the checks and proposed closure steps before syncing or archiving.
+Choose the endpoint that matches the request.
+
+| Request | Skill and result |
+| --- | --- |
+| Work through the requirements | `engineering-requirements` returns reviewed requirements, acceptance scenarios, and approval status. |
+| Design an OpenSpec change | `engineering-change-planning` takes the proposal through requirements, UI/API/architecture design, and independent review of `tasks.md`. |
+| Complete the task end to end | `engineering-workflow` coordinates planning, the two local commits, implementation, verification, and closure. |
+
+The first commit records the reviewed OpenSpec change before implementation. Failed checks or substantiated review findings send the work back for correction and independent re-review as applicable. Once verification passes, the coordinator syncs the specifications, archives the change, and makes the final commit with the implementation, tests, and archived change. [Full OpenSpec cycle](skills/engineering-workflow/SKILL.md#full-openspec-cycle)
+
+In interactive mode, the user resolves material questions and approves the requirements and design. An autonomous full-cycle request delegates those in-scope decisions to the coordinator. Both modes require the same reviews and verification. [Six planning stages](skills/engineering-change-planning/SKILL.md#six-stages)
 
 Use only the stages relevant to the task. In projects without OpenSpec, the set still applies Compound Engineering and the same review rules to the project's existing requirements and plans. It does not initialize OpenSpec automatically.
 
@@ -21,9 +26,10 @@ Use only the stages relevant to the task. In projects without OpenSpec, the set 
 | --- | --- |
 | [engineering-setup](skills/engineering-setup/SKILL.md) | Check and prepare OpenSpec or Graphify in the target project when needed; reuse accessible dependencies. |
 | [engineering-requirements](skills/engineering-requirements/SKILL.md) | Develop and review requirements for a new product or an existing project change, and record what has been approved. |
-| [engineering-workflow](skills/engineering-workflow/SKILL.md) | Coordinate OpenSpec context, Compound Engineering stages, delegation, verification, and change closure. |
+| [engineering-change-planning](skills/engineering-change-planning/SKILL.md) | Design an OpenSpec change through a reviewed implementation plan. |
+| [engineering-workflow](skills/engineering-workflow/SKILL.md) | Coordinate the full cycle in interactive or autonomous mode. |
 | [engineering-code-review](skills/engineering-code-review/SKILL.md) | Require independent code review, evaluate findings, and repeat review after fixes. |
-| [engineering-spec-review](skills/engineering-spec-review/SKILL.md) | Check requirements, specifications, and plans against governing sources, with independent re-review after corrections. |
+| [engineering-spec-review](skills/engineering-spec-review/SKILL.md) | Review proposals, specifications, designs, and implementation plans against governing sources, with independent re-review after corrections. |
 
 The set adds coordination and review rules to the specialist skills. The main agent remains responsible for evaluating findings, integrating changes, and checking the result. Minor recommendations do not block completion. Commits, pushes, and publishing require the user's authorization.
 
@@ -68,13 +74,16 @@ Which skill should I use to plan a feature, fix a bug, or review a change?
 Show me what I could ask in each case.
 ```
 
-After installation, open a new chat and confirm that all five skills and Compound Engineering are available. For a new product you can start directly with requirements. For an existing change the workflow routes the request to the same skill.
+After installation, open a new chat and confirm that all six skills and Compound Engineering are available.
 
 ```text
 Use $engineering-requirements to turn the product brief into first-release requirements.
 
-Use $engineering-workflow to prepare and review the requirements for the existing
-OpenSpec change <change-name>. Report their approval status.
+Use $engineering-change-planning to design OpenSpec change <change-name> through a reviewed tasks.md.
+
+Use $engineering-workflow to complete <task> interactively. Discuss the requirements and design with me.
+
+Use $engineering-workflow to implement <task> autonomously from start to finish.
 ```
 
 To inspect project readiness separately:

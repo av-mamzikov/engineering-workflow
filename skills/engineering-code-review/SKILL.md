@@ -15,7 +15,7 @@ Stay within the authorized review scope. Committing, pushing, publishing, or cha
 
 ## Resolve and re-review
 
-The main agent evaluates each finding against requirements and evidence. Fix substantiated issues within authorized scope and rerun relevant checks. Record the rationale for accepting or rejecting disputed findings; reopen rejected findings only when new evidence warrants it.
+The main agent evaluates each finding against requirements and evidence. In autonomous mode, it decides which findings to accept or reject within the authorized scope. Apply accepted fixes and rerun relevant checks. Record the rationale for disputed decisions and reopen rejected findings only when new evidence warrants it. If a fix requires changing a user-approved requirement or design decision, return that decision to the user.
 
 Before declaring the code change complete, run the project's full test suite on the final changed state, including review fixes. A component's full suite is sufficient only when the project has an established verification boundary for that independent component and the change stays within it. Reuse a completed full run only if it covers that final state. If the required run cannot be completed, report the reason, checks actually run and their results, and the remaining verification gap. Passing selected tests does not establish that the full suite passed; do not declare verification complete while required checks remain unrun or failing.
 
